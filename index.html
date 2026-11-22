@@ -5,11 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Nassim">
+<meta name="apple-mobile-web-app-title" content="Nassim Muslim Pro">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#0b4f79">
 <link rel="apple-touch-icon" href="icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-180.png">
-<title>L'aventure de Nassim</title>
+<title>Nassim Muslim Pro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Lilita+One&family=Noto+Naskh+Arabic:wght@500;700&family=Amiri+Quran&display=swap" rel="stylesheet">
 <style>
@@ -957,7 +959,7 @@ else if(!PREMIUM)document.querySelectorAll('.hcard[href="#lire"] b,.hcard[href="
 $("facts").innerHTML=FACTS.map(f=>`<div class="fact"><b>${f[0]}</b>${f[1]}</div>`).join("");
 let kid="Nassim",opened=false;try{const k=localStorage.getItem("aventure_kid");if(k){kid=k;opened=true}}catch(e){}
 const deK=()=>(/^[aeiouyhâàéèêîïôûAEIOUYHÂÀÉÈÊÎÏÔÛ]/.test(kid)?"d'":"de ")+kid;
-const setName=()=>{$("hName").textContent=kid?"L'aventure "+deK():"Mon aventure";document.title=kid?"L'aventure "+deK():"Mon aventure arabe"};setName();
+const setName=()=>{$("hName").textContent=kid?"L'aventure "+deK():"Mon aventure";document.title="Nassim Muslim Pro"};setName();
 if(GIFT&&!opened)$("wel").classList.add("on");
 $("welGo").onclick=()=>{const v=$("kidName").value.trim().slice(0,20);if(!v){$("kidName").focus();$("kidName").placeholder="Écris ton prénom ici 👈";return}kid=v;try{localStorage.setItem("aventure_kid",kid)}catch(e){}setName();$("wel").classList.remove("on");location.hash="accueil";route();toast("Bienvenue "+kid+" ! +10 XP 🎉");addStar(1)};
 $("kidName").addEventListener("keydown",e=>{if(e.key==="Enter")$("welGo").click()});
@@ -974,5 +976,6 @@ head();renderGrid();renderDetail();renderLire();renderGameSeg();newGame();render
 addEventListener("hashchange",route);route();
 }
 </script>
+<script>if("serviceWorker" in navigator){addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{})})}</script>
 </body>
 </html>
